@@ -3,7 +3,7 @@ function setActive(id, active) {
     if (el) el.classList.toggle('active', active);
 }
 
-// ── Circuit 0: TRANSISTOR
+// Circuit 0: TRANSISTOR
 
 const switch0 = document.getElementById('switch0');
 const lamp0   = document.getElementById('lamp0');
@@ -24,7 +24,7 @@ switch0.addEventListener('click', () => {
     updateCircuit0();
 });
 
-// ── Circuit 1: AND GATE
+// Circuit 1: AND GATE
 
 const switchA1 = document.getElementById('switchA1');
 const switchB1 = document.getElementById('switchB1');
@@ -35,21 +35,17 @@ function updateCircuit1() {
     const b   = switchB1.classList.contains('on');
     const out = a && b;
 
-    // First transistor — controlled by switchA1
     setActive('wireB1',     a);
     setActive('wireB1_2',   a);
     setActive('wireOutA1',  a);
     setActive('wireOutA1_2', a);
 
-    // Wire between the two transistors is live only when A is on
     setActive('wireC1',   a);
     setActive('wireC1_2', a);
 
-    // Second transistor — controlled by switchB1
     setActive('wireD1',   b);
     setActive('wireD1_2', b);
 
-    // Output — only lit when both are on
     setActive('wireOutB1',   out);
     setActive('wireOutB1_2', out);
 
@@ -66,7 +62,7 @@ switchB1.addEventListener('click', () => {
     updateCircuit1();
 });
 
-// ── Circuit 2: OR GATE
+// Circuit 2: OR GATE
 
 const switchA2 = document.getElementById('switchA2');
 const switchB2 = document.getElementById('switchB2');
@@ -77,19 +73,16 @@ function updateCircuit2() {
     const b   = switchB2.classList.contains('on');
     const out = a || b;
 
-    // Top branch — controlled by switchA2
     setActive('wireB2',     a);
     setActive('wireB2_2',   a);
     setActive('wireOutA2',  a);
     setActive('wireOutA2_2', a);
 
-    // Bottom branch — controlled by switchB2
     setActive('wireD2',     b);
     setActive('wireD2_2',   b);
     setActive('wireOutB2',  b);
     setActive('wireOutB2_2', b);
 
-    // Shared output wire — live when either branch is on
     setActive('wireOutC2_top', a);
     setActive('wireOutC2_bot', b);
     setActive('wireOutC2_2', out);
