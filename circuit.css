@@ -15,6 +15,13 @@ h1 {
     letter-spacing: 2px;
 }
 
+h2 {
+    margin-top: 20%;
+    margin-bottom: 30px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
 #content {
     display: flex;
     padding-top: 80px;
@@ -23,10 +30,10 @@ h1 {
 }
 
 svg {
+    border: white solid;
     display: block;
-    width: 800px;
-    height: 400px;
-    margin-bottom: 20px;
+    width: 80vw;
+    height: 600px;
 }
 
 svg text {
@@ -35,7 +42,7 @@ svg text {
 
 .tcircle {
     stroke: #334155;
-    stroke-width: 2;
+    stroke-width: 1.5;
     fill: none;
 }
 
@@ -73,18 +80,22 @@ svg text {
 
 .switch {
     cursor: pointer;
-    fill: #94a3b8;
+    fill: #9eb1cbce;
     stroke: #1e293b;
     stroke-width: 5;
     transition: fill 0.3s;
 }
 
 .switch.on {
-    fill: #a3fd79;
+    fill: #b5ec9b;
 }
 
 text {
     fill: white;
     font-size: 18px;
     user-select: none;
+}
+
+br {
+    margin-bottom: 70px;
 }
