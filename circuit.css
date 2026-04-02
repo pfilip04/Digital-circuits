@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background: #010101;
-    color: #5afa97;
+    color: #8fff89;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -32,6 +32,13 @@ svg {
 svg text {
     fill: #93f7ee;
 }
+
+.tcircle {
+    stroke: #334155;
+    stroke-width: 2;
+    fill: none;
+}
+
 
 .wire {
     stroke: #334155;
