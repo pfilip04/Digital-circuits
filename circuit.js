@@ -297,6 +297,9 @@ function updateCircuit5() {
     setActive('wireOutC5', out3);
     setActive('wireOutD5', out4);
 
+    setContent('NumA5', Number(p))
+    setContent('NumB5', Number(q))
+
     lampA5.classList.toggle('on', out1);
     lampB5.classList.toggle('on', out2);
     lampC5.classList.toggle('on', out3);
