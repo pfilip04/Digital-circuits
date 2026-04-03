@@ -36,10 +36,6 @@ svg {
     height: 600px;
 }
 
-svg text {
-    fill: #93f7ee;
-}
-
 .tcircle {
     stroke: #334155;
     stroke-width: 1.5;
@@ -98,7 +94,7 @@ svg text {
     cursor: pointer;
     fill: #9eb1cbce;
     stroke: #1e293b;
-    stroke-width: 5;
+    stroke-width: 3;
     transition: fill 0.3s;
 }
 
@@ -106,10 +102,23 @@ svg text {
     fill: #b5ec9b;
 }
 
-text {
+svg text {
     fill: white;
-    font-size: 18px;
+    text-anchor: start;
+    dominant-baseline: text-bottom;
+    font-size: medium;
     user-select: none;
+}
+
+.res_txt {
+    fill: #9eb1cbce;
+    font-size: 30px;
+}
+
+.res_txt.active {
+    fill: #cef522;
+    filter: drop-shadow(0 0 8px #22c55e);
+    font-size: 30px;
 }
 
 br {

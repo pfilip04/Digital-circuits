@@ -1,9 +1,24 @@
 
-// Function setActive: toggles "active" on and off based on truth value
+// Setter and Getter funcs: toggles/gets "active" on and off based on truth value/returns truth value
 
 function setActive(id, active) {
+
     const el = document.getElementById(id);
     if (el) el.classList.toggle('active', active);
+}
+
+function getActive(id) {
+
+    const el = document.getElementById(id);
+    return el ? el.classList.contains('active') : false;
+}
+
+// Setter for text content inside of the svg text element
+
+function setContent(id, content, condition = true) {
+
+    const el = document.getElementById(id);
+    if (el && condition) el.textContent = content;
 }
 
 
@@ -13,6 +28,7 @@ const switchA0 = document.getElementById('switchA0');
 const lamp0 = document.getElementById('lamp0');
 
 function updateCircuit0() {
+
     const on = switchA0.classList.contains('on');
 
     setActive('wireB0', on);
@@ -24,6 +40,7 @@ function updateCircuit0() {
 }
 
 switchA0.addEventListener('click', () => {
+
     switchA0.classList.toggle('on');
     updateCircuit0();
 });
@@ -35,6 +52,7 @@ const switchA1 = document.getElementById('switchA1');
 const lamp1 = document.getElementById('lamp1');
 
 function updateCircuit1() {
+
     const on = switchA1.classList.contains('on');
     const out = !on;
 
@@ -55,6 +73,7 @@ function updateCircuit1() {
 }
 
 switchA1.addEventListener('click', () => {
+
     switchA1.classList.toggle('on');
     updateCircuit1();
 });
@@ -67,6 +86,7 @@ const switchB2 = document.getElementById('switchB2');
 const lamp2 = document.getElementById('lamp2');
 
 function updateCircuit2() {
+
     const a = switchA2.classList.contains('on');
     const b = switchB2.classList.contains('on');
     const out = a && b;
@@ -89,11 +109,13 @@ function updateCircuit2() {
 }
 
 switchA2.addEventListener('click', () => {
+
     switchA2.classList.toggle('on');
     updateCircuit2();
 });
 
 switchB2.addEventListener('click', () => {
+
     switchB2.classList.toggle('on');
     updateCircuit2();
 });
@@ -106,6 +128,7 @@ const switchB3 = document.getElementById('switchB3');
 const lamp3 = document.getElementById('lamp3');
 
 function updateCircuit3() {
+
     const a = switchA3.classList.contains('on');
     const b = switchB3.classList.contains('on');
     const out = a || b;
@@ -128,11 +151,13 @@ function updateCircuit3() {
 }
 
 switchA3.addEventListener('click', () => {
+
     switchA3.classList.toggle('on');
     updateCircuit3();
 });
 
 switchB3.addEventListener('click', () => {
+
     switchB3.classList.toggle('on');
     updateCircuit3();
 });
@@ -145,6 +170,7 @@ const switchB4 = document.getElementById('switchB4');
 const lamp4 = document.getElementById('lamp4');
 
 function updateCircuit4() {
+
     const a = switchA4.classList.contains('on');
     const b = switchB4.classList.contains('on');
 
@@ -212,11 +238,13 @@ function updateCircuit4() {
 }
 
 switchA4.addEventListener('click', () => {
+
     switchA4.classList.toggle('on');
     updateCircuit4();
 });
 
 switchB4.addEventListener('click', () => {
+
     switchB4.classList.toggle('on');
     updateCircuit4();
 });
@@ -232,6 +260,7 @@ const lampC5 = document.getElementById('lampC5');
 const lampD5 = document.getElementById('lampD5');
 
 function updateCircuit5() {
+
     const p = switchP5.classList.contains('on');
     const q = switchQ5.classList.contains('on');
 
@@ -275,11 +304,123 @@ function updateCircuit5() {
 }
 
 switchP5.addEventListener('click', () => {
+
     switchP5.classList.toggle('on');
     updateCircuit5();
 });
 
 switchQ5.addEventListener('click', () => {
+
     switchQ5.classList.toggle('on');
     updateCircuit5();
+});
+
+// Circuit 6: SET-RESET circuit
+
+const switchA6 = document.getElementById('switchA6');
+const switchB6 = document.getElementById('switchB6');
+
+function updateCircuit6() {
+
+    const a = switchA6.classList.contains('on');
+    const b = switchB6.classList.contains('on');
+    const c = getActive('wireInNOut6');
+
+    const out1 = a || c;
+    const out2 = !b;
+    const out = out1 && out2
+
+    setActive('wireA6', a);
+    setActive('wireB6', b);
+
+    setActive('wireOutA6', out1);
+    setActive('wireOutB6', out2);
+
+    setActive('wireOutX6', out);
+    setActive('wireOutX6_2', out);
+    setActive('wireOutX6_3', out);
+    setActive('wireOutX6_4', out);
+    setActive('wireInNOut6', out);
+    
+    setActive('Out6', out);
+    setContent('Out6', Number(out));
+}
+
+switchA6.addEventListener('click', () => {
+
+    switchA6.classList.toggle('on');
+    updateCircuit6();
+    updateCircuit6();
+});
+
+switchB6.addEventListener('click', () => {
+
+    switchB6.classList.toggle('on');
+    updateCircuit6();
+    updateCircuit6();
+});
+
+// Circuit 7: WRITE ENABLE circuit
+
+const switchA7 = document.getElementById('switchA7');
+const switchB7 = document.getElementById('switchB7');
+const lamp7 = document.getElementById('lamp7');
+
+function updateCircuit7() {
+
+    const a = switchA7.classList.contains('on');
+    const b = switchB7.classList.contains('on');
+    const c = getActive('wireInNOut7');
+
+    const notA = !a;
+
+    const out1 = a && b;
+    const out2 = notA && b;
+
+    const out3 = out1 || c;
+    const out4 = !out2;
+    const out = out3 && out4;
+
+    setActive('wireA7', a);
+    setActive('wireConnA7', a);
+    setActive('wireConnA7_2', a);
+
+    setActive('wireB7', b);
+    setActive('wireConnB7', b);
+    setActive('wireConnB7_2', b);
+
+    setActive('wireOutNA7', notA);
+
+    setActive('wireOutA7', out1);
+    setActive('wireOutB7', out2);
+
+    setActive('wireOutC7', out3);
+    setActive('wireOutD7', out4);
+
+    setActive('wireOutX7', out);
+    setActive('wireOutX7_2', out);
+    setActive('wireOutX7_3', out);
+    setActive('wireOutX7_4', out);
+
+    setActive('wireInNOut7', out);
+    
+    setActive('Out7', out);
+    setContent('Out7', Number(out));
+
+    setActive('wireOut7', out);
+    lamp7.classList.toggle('on', out);
+}
+
+switchA7.addEventListener('click', () => {
+
+    switchA7.classList.toggle('on');
+    updateCircuit7();
+    updateCircuit7();
+});
+
+switchB7.addEventListener('click', () => {
+
+    switchB7.classList.toggle('on');
+    updateCircuit7();
+    updateCircuit7();
 });
