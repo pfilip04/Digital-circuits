@@ -220,3 +220,66 @@ switchB4.addEventListener('click', () => {
     switchB4.classList.toggle('on');
     updateCircuit4();
 });
+
+// Circuit 5: Binary Decoder
+
+const switchP5 = document.getElementById('switchP5');
+const switchQ5 = document.getElementById('switchQ5');
+
+const lampA5 = document.getElementById('lampA5');
+const lampB5 = document.getElementById('lampB5');
+const lampC5 = document.getElementById('lampC5');
+const lampD5 = document.getElementById('lampD5');
+
+function updateCircuit5() {
+    const p = switchP5.classList.contains('on');
+    const q = switchQ5.classList.contains('on');
+
+    const notP = !p;
+    const notQ = !q;
+
+    const out1 = notP && notQ;
+    const out2 = notP && q;
+    const out3 = p && notQ;
+    const out4 = p && q;
+
+    setActive('wireP5', p);
+    setActive('wireP5_2', p);
+    setActive('wireInP5', p);
+    setActive('wireInP5_2', p);
+    setActive('wireInP5_3', p);
+
+    setActive('wireQ5', q);
+    setActive('wireQ5_2', q);
+    setActive('wireInQ5', q);
+    setActive('wireInQ5_2', q);
+    setActive('wireInQ5_3', q);
+
+    setActive('wireInN1P5', notP);
+    setActive('wireInN2P5', notP);
+    setActive('wireInN2P5_2', notP);
+
+    setActive('wireInN1Q5', notQ);
+    setActive('wireInN2Q5', notQ);
+    setActive('wireInN2Q5_2', notQ);
+
+    setActive('wireOutA5', out1);
+    setActive('wireOutB5', out2);
+    setActive('wireOutC5', out3);
+    setActive('wireOutD5', out4);
+
+    lampA5.classList.toggle('on', out1);
+    lampB5.classList.toggle('on', out2);
+    lampC5.classList.toggle('on', out3);
+    lampD5.classList.toggle('on', out4);
+}
+
+switchP5.addEventListener('click', () => {
+    switchP5.classList.toggle('on');
+    updateCircuit5();
+});
+
+switchQ5.addEventListener('click', () => {
+    switchQ5.classList.toggle('on');
+    updateCircuit5();
+});

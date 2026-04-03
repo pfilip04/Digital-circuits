@@ -55,9 +55,25 @@ svg text {
     transition: stroke 0.3s;
 }
 
+.wire.p {
+    filter: drop-shadow(0 0 12px #041dff);
+}
+
+.wire.q {
+    filter: drop-shadow(0 0 10px #3600d8);
+}
+
+.wire.np {
+    filter: drop-shadow(0 0 10px #ff0404);
+}
+
+.wire.nq {
+    filter: drop-shadow(0 0 10px #ee6dff);
+}
+
 .wire.active {
     stroke: #cef522;
-    filter: drop-shadow(0 0 6px #22c55e);
+    filter: drop-shadow(0 0 8px #22c55e);
 }
 
 .gate {
